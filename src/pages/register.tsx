@@ -1,32 +1,45 @@
 ﻿import React, { useState } from 'react';
-import './login.css';
-import { Link } from 'react-router-dom';
+import './login.css'; // используем тот же стиль
 
-const Login: React.FC = () => {
-    // Состояния для полей ввода
+const Register: React.FC = () => {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    // Функция обработки отправки формы
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Данные для входа:', { email, password });
+        console.log('Данные регистрации:', { name, email, password });
     };
 
     return (
         <div className="login-container">
             <div className="login-form">
 
-                {/* Шапка формы: Log по центру, крестик справа */}
+                {/* Шапка */}
                 <div className="login-header">
-                    <h1 className="login-title">Log</h1>
-                    <span className="close-icon" onClick={() => console.log('Close clicked')}>X</span>
+                    <h1 className="login-title">Registration</h1>
+                    <span className="close-icon" onClick={() => window.location.href = '/'}>
+                        X
+                    </span>
                 </div>
 
                 <form className="form-content" onSubmit={handleSubmit}>
 
-                    {/* Поле Mail */}
+                    {/* Name */}
+                    <div className="form-group-combined">
+                        <label htmlFor="name">Name</label>
+                        <input
+                            id="name"
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="enter"
+                            required
+                        />
+                    </div>
+
+                    {/* Mail */}
                     <div className="form-group-combined">
                         <label htmlFor="email">Mail</label>
                         <input
@@ -39,7 +52,7 @@ const Login: React.FC = () => {
                         />
                     </div>
 
-                    {/* Поле Password с кнопкой "глаз" */}
+                    {/* Password */}
                     <div className="form-group-combined">
                         <label htmlFor="password">Password</label>
                         <div style={{ position: 'relative', width: '100%' }}>
@@ -54,7 +67,6 @@ const Login: React.FC = () => {
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="password-toggle"
                                 style={{
                                     position: 'absolute',
                                     right: '20px',
@@ -64,9 +76,7 @@ const Login: React.FC = () => {
                                     border: 'none',
                                     cursor: 'pointer',
                                     color: '#5B8064',
-                                    fontSize: '1.2rem',
-                                    display: 'flex',
-                                    alignItems: 'center'
+                                    fontSize: '1.2rem'
                                 }}
                             >
                                 {showPassword ? '👁' : '👁‍🗨'}
@@ -74,14 +84,14 @@ const Login: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Кнопка входа: центрирована через CSS */}
+                    {/* Кнопка */}
                     <button type="submit" className="login-btn">
-                        Log in
+                        Register
                     </button>
 
-                    {/* Ссылка под формой */}
+                    {/* Ссылка */}
                     <p className="register-link">
-                        Don’t have an account? <Link to="/register">Register now.</Link>
+                        Already have an account? <a href="/login">Log in</a>
                     </p>
                 </form>
             </div>
@@ -89,4 +99,4 @@ const Login: React.FC = () => {
     );
 };
 
-export default Login;
+export default Register;

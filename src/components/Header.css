@@ -24,10 +24,9 @@
 }
 
 .home-icon {
-    font-size: 24px;
-    color: #5B8064; /* “вой темно-зеленый */
-    /* ≈сли используешь системную иконку, можно добавить фильтр цвета */
-    filter: grayscale(1) sepia(1) saturate(5) hue-rotate(90deg);
+    width: 28px;
+    height: 28px;
+    color: #5B8064;
 }
 
 /* Ёффект при наведении на домик */

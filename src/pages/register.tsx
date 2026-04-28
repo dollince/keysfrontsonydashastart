@@ -1,5 +1,7 @@
 ﻿import React, { useState } from 'react';
-import './login.css'; // используем тот же стиль
+import './login.css';
+import { CloseEyesIcon } from '../icons/Closeeyesicon';
+import { OpenEyesIcon } from '../icons/Openeyesicon';  
 
 const Register: React.FC = () => {
     const [name, setName] = useState('');
@@ -79,7 +81,7 @@ const Register: React.FC = () => {
                                     fontSize: '1.2rem'
                                 }}
                             >
-                                {showPassword ? '👁' : '👁‍🗨'}
+                                {showPassword ? <OpenEyesIcon className="open-eye-icon" width={20} height={20} color="#5B8064" /> : <CloseEyesIcon className="close-eye-icon" width={20} height={20} color="#5B8064" />}
                             </button>
                         </div>
                     </div>

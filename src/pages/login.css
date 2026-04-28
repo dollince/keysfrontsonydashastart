@@ -126,3 +126,8 @@
         font-weight: 600;
         text-decoration: underline;
     }
+.close-eye-icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+}

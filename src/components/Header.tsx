@@ -1,20 +1,19 @@
-﻿import React from 'react';
+﻿
+import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { HouseIcon } from '../icons/HouseIcon';
-import { PlusIcon } from '../icons/PlusIcon';
+import { HouseIcon } from '../icons/houseicon';
+import { PlusIcon } from '../icons/plusicon';
 import './Header.css';
 
 const Header: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Проверяем, на главной ли мы странице
     const isHomePage = location.pathname === '/';
 
     const handleIconClick = () => {
         if (isHomePage) {
             console.log('Создать новый проект');
-            // Позже: navigate('/create-project');
         } else {
             navigate('/');
         }
@@ -24,13 +23,18 @@ const Header: React.FC = () => {
         <header className="main-header">
             <div className="home-icon-container" onClick={handleIconClick} title={isHomePage ? "Создать" : "На главную"}>
                 {isHomePage ? (
-                    <PlusIcon className="home-icon" color="#2d5a3b" />  // ← плюсик на главной
+                    <PlusIcon className="home-icon" color="#2d5a3b" />
                 ) : (
-                    <HouseIcon className="home-icon" color="#2d5a3b" />  // ← домик на других страницах
+                    <HouseIcon className="home-icon" color="#2d5a3b" />
                 )}
             </div>
+            
             <div className="header-title">name</div>
-            <div className="header-spacer"></div>
+
+            {/* Кнопка Profile справа */}
+            <div className="header-profile-link" onClick={() => navigate('/profile')}>
+                profile
+            </div>
         </header>
     );
 };

@@ -1,7 +1,8 @@
 ﻿import React, { useState } from 'react';
-import './login.css';
-import { CloseEyesIcon } from '../icons/Closeeyesicon';
-import { OpenEyesIcon } from '../icons/Openeyesicon';  
+import './login.css'; // используем тот же стиль
+import { useNavigate, Link } from 'react-router-dom';
+import {CloseEyesIcon} from "../icons/Closeeyesicon.tsx";
+import {OpenEyesIcon} from "../icons/Openeyesicon.tsx";
 
 const Register: React.FC = () => {
     const [name, setName] = useState('');
@@ -9,9 +10,39 @@ const Register: React.FC = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Данные регистрации:', { name, email, password });
+
+        const response = await fetch('http://localhost:8080/api/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+
+            body: JSON.stringify({ name, email, password }),
+        });
+
+        if (response.ok) {
+            alert('Регистрация успешна!');
+            navigate('/login');
+        } else {
+            const contentType = response.headers.get("content-type");
+
+            if (contentType && contentType.includes("application/json")) {
+
+                const errors = await response.json();
+
+
+                const errorMessages = Object.values(errors).join('\n');
+                alert(errorMessages);
+            } else {
+
+                const errorText = await response.text();
+                alert(errorText);
+            }
+        }
     };
 
     return (
@@ -93,7 +124,7 @@ const Register: React.FC = () => {
 
                     {/* Ссылка */}
                     <p className="register-link">
-                        Already have an account? <a href="/login">Log in</a>
+                        Already have an account? <Link to ="/login">Log in</Link>
                     </p>
                 </form>
             </div>

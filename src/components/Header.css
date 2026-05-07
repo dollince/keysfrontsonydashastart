@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    position: fixed; /* ���������� ������� */
+    position: fixed; /* Закрепляем наверху */
     top: 0;
     left: 0;
     z-index: 1000;
@@ -29,7 +29,7 @@
     color: #5B8064;
 }
 
-/* ������ ��� ��������� �� ����� */
+/* Эффект при наведении на домик */
 .home-icon-container:hover {
     background-color: rgba(91, 128, 100, 0.1);
     transform: scale(1.1);
@@ -40,12 +40,34 @@
     font-size: 24px;
     color: #5B8064;
     font-weight: 500;
-    /* ���������� ��������� ������ ������ */
+    /* Центрируем абсолютно внутри хедера */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .header-spacer {
-    width: 40px; /* ����� ������������ ������ ����� */
+    width: 40px; /* Чтобы уравновесить иконку слева */
+}
+
+.header-profile-link {
+    cursor: pointer; 
+    transition: transform 0.2s ease, opacity 0.2s ease; 
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    color: #2d5a3b;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    user-select: none;
+}
+
+
+.header-profile-link:hover {
+    transform: scale(1.1); /* Увеличивает кнопку на 10% при наведении */
+    opacity: 0.8; /* Немного меняет прозрачность для эффекта нажатия */
+}
+
+.header-profile-link:active {
+    transform: scale(0.95); /* Немного уменьшается при самом клике */
 }

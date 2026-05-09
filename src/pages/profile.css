@@ -21,7 +21,7 @@
 }
 
 .profile-field label {
-    background-color: #E6EADF;
+    background-color: #D8E2C8;
     color: #5B8064;
     padding: 10px 25px;
     border-radius: 15px 15px 0 0;
@@ -31,7 +31,7 @@
 
 .profile-field input,
 .profile-field textarea {
-    background-color: #E6EADF;
+    background-color: #EDF0E8;
     border: none;
     border-radius: 0 0 15px 15px;
     padding: 15px 25px;
@@ -39,16 +39,16 @@
     color: #333;
     outline: none;
     margin-top: -1px;
-    opacity: 0.8;
 }
 
 .profile-value {
     font-size: 16px;
     color: #333;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-    min-height: 24px;
+    padding: 15px 25px;
+    background-color: #EDF0E8;
+    border-radius: 0 0 15px 15px;
     margin: 0;
+    min-height: 24px;
 }
 
 .profile-actions {
@@ -215,7 +215,7 @@
 }
 
 .form-group-combined label {
-    background-color: #E6EADF;
+    background-color: #D8E2C8;
     color: #5B8064;
     padding: 8px 20px;
     border-radius: 12px 12px 0 0;
@@ -224,14 +224,13 @@
 }
 
 .form-group-combined input {
-    background-color: #E6EADF;
+    background-color: #EDF0E8;
     border: none;
     border-radius: 0 0 12px 12px;
     padding: 12px 20px;
     font-size: 1rem;
     color: #333;
     outline: none;
-    opacity: 0.85;
 }
 
 /* Сообщения об ошибке/успехе */

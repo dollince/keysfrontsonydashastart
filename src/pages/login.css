@@ -66,7 +66,7 @@
     /* Выравнивание Mail и Password слева */
     .form-group-combined label {
         display: block;
-        background-color: #5B8064;
+        background-color: #D8E2C8; /* Изменено на D8E2C8 */
         color: white;
         padding: 8px 20px; /* Отступ слева 20px */
         border-top-left-radius: 20px;
@@ -80,7 +80,7 @@
     .form-group-combined input {
         width: 100%;
         padding: 12px 20px; /* Отступ слева 20px, чтобы совпадал с лейблом */
-        background-color: #E6EADF;
+        background-color: #EDF0E8; /* Изменено на EDF0E8 */
         border: none;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;

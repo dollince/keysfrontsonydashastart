@@ -46,7 +46,7 @@ const Header: React.FC<HeaderProps> = ({ onCreateTeam, onProfile, isLoggedIn }) 
             <div className="header-title">name</div>
 
             <div className="header-profile-link" onClick={handleProfileClick}>
-                {isLoggedIn ? 'profile' : 'log in'}
+                profile
             </div>
         </header>
     );

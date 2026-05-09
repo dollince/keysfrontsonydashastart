@@ -1,11 +1,16 @@
-﻿
-import React from 'react';
+﻿import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { HouseIcon } from '../icons/houseicon';
 import { PlusIcon } from '../icons/plusicon';
 import './Header.css';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+    onCreateTeam?: () => void;
+    onProfile?: () => void;
+    isLoggedIn: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ onCreateTeam, onProfile, isLoggedIn }) => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -13,27 +18,35 @@ const Header: React.FC = () => {
 
     const handleIconClick = () => {
         if (isHomePage) {
-            console.log('Создать новый проект');
+            if (onCreateTeam) onCreateTeam();
         } else {
             navigate('/');
         }
     };
 
+    const handleProfileClick = () => {
+        if (!isLoggedIn) {
+            // Не залогинен — вызываем обработчик из App (покажет модалку)
+            if (onProfile) onProfile();
+        } else {
+            navigate('/profile');
+        }
+    };
+
     return (
         <header className="main-header">
-            <div className="home-icon-container" onClick={handleIconClick} title={isHomePage ? "Создать" : "На главную"}>
+            <div className="home-icon-container" onClick={handleIconClick} title={isHomePage ? "Создать команду" : "На главную"}>
                 {isHomePage ? (
                     <PlusIcon className="home-icon" color="#2d5a3b" />
                 ) : (
                     <HouseIcon className="home-icon" color="#2d5a3b" />
                 )}
             </div>
-            
+
             <div className="header-title">name</div>
 
-            {/* Кнопка Profile справа */}
-            <div className="header-profile-link" onClick={() => navigate('/profile')}>
-                profile
+            <div className="header-profile-link" onClick={handleProfileClick}>
+                {isLoggedIn ? 'profile' : 'log in'}
             </div>
         </header>
     );
